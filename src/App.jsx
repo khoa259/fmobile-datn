@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import WebsiteLayout from "./Layout/WebsiteLayout";
+import HomePage from "./pages/client/homePage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<WebsiteLayout />}>
+          <Route index element={<HomePage />} />
           <Route path="/iphone" element={<h1>Iphone Page</h1>} />
           <Route path="/mac" element={<h1>MacBook page</h1>} />
           <Route path="/imac" element={<h1>Imac page</h1>} />
