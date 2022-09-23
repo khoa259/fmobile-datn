@@ -30,7 +30,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="https://fptshop.com.vn/Uploads/Originals/2022/9/19/637991957822826217_190922_ip14-01.png"
+            src="https://fptshop.com.vn/Uploads/Originals/2022/9/19/637991958399093314_190922_ip14-02.png"
             alt=""
           />
         </SwiperSlide>
