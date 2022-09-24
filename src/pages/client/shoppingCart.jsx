@@ -3,14 +3,71 @@ import { Button } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
+import { clearCart, decreaseCart, getTotal, increaseCart, removeCart } from "../../slice/cartSlice";
 
 const ShopppingCart = () => {
+  const cart = useSelector((state) => state.cart);
+  console.log("cart", cart);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getTotal());
+  }, [cart]);
+
+  const handleRemoveCart = (cartItem) => {
+    dispatch(removeCart(cartItem));
+  };
+
+  const handleDecreaseCart = (cartItem) => {
+    dispatch(decreaseCart(cartItem));
+  };
+
+  const handleIncreaseCart = (cartItem) => {
+    dispatch(increaseCart(cartItem));
+  };
+
+  const hanleClearCart = () => {
+    dispatch(clearCart());
+  };
+
   return (
     <div>
+      <ol
+        role="list"
+        className="bg-[#F1F1F1] max-w-2xl mt-10 mx-auto px-4 py-2 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8"
+      >
+        <li>
+          <div className="flex items-center">
+            <NavLink to={"/"} className="mr-2 text-sm font-medium text-gray-900">
+              Trang chủ
+            </NavLink>
+            <svg
+              width="16"
+              height="20"
+              viewBox="0 0 16 20"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              className="w-4 h-5 text-gray-300"
+            >
+              <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+            </svg>
+          </div>
+        </li>
+
+        <li>
+          <div className="flex items-center">
+            <NavLink to={"/cart"} className="mr-2 text-sm font-medium text-gray-900">
+              Giỏ hàng
+            </NavLink>
+          </div>
+        </li>
+      </ol>
       <div className="flex justify-center my-6">
         <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
           <div className="flex-1">
-            <table className="w-full text-sm lg:text-base" cellspacing="0">
+            <table className="w-full text-sm lg:text-base">
               <thead>
                 <tr className="h-12 uppercase">
                   <th className="hidden md:table-cell">Hình ảnh</th>
@@ -24,46 +81,47 @@ const ShopppingCart = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* {cart.cartItems.map((item) => ( */}
-                {/* <tr key={item._id0}> */}
-                <tr>
-                  <td className="hidden pb-4 md:table-cell">
-                    {/* <img src={item.image} className="w-20 rounded mx-auto" alt="Thumbnail" /> */}
-                  </td>
-                  <td>{/* <p className="mb-2 md:ml-4 float-left">{item.name}</p> */}</td>
-                  <td className="w-28 float-left mt-8">
-                    <div className="w-20 h-10 ">
-                      <div className="flex flex-row w-full h-8">
-                        {/* <Button type="danger" onClick={() => handleDecreaseCart(item)}>
+                {cart.cartItems.map((item) => (
+                  <tr key={item._id0}>
+                    <td className="hidden pb-4 md:table-cell">
+                      <img src={item.image} className="w-20 rounded mx-auto" alt="Thumbnail" />
+                    </td>
+                    <td>
+                      <p className="mb-2 md:ml-4 float-left">{item.name}</p>
+                    </td>
+                    <td className="w-28 float-left mt-8">
+                      <div className="w-20 h-10 ">
+                        <div className="flex flex-row w-full h-8">
+                          <Button type="danger" onClick={() => handleDecreaseCart(item)}>
                             -
-                          </Button> */}
-                        {/* <input type="number" min={1} value={item.quantity} className="text-center w-20" /> */}
-                        {/* <Button type="primary" onClick={() => handleIncreaseCart(item)}>
+                          </Button>
+                          <input type="number" min={1} value={item.quantity} className="text-center w-20" />
+                          <Button type="primary" onClick={() => handleIncreaseCart(item)}>
                             +
-                          </Button> */}
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td className="hidden text-right md:table-cell">
-                    <span className="text-sm text-center lg:text-base font-medium">
-                      {/* {item.price.toLocaleString("vi-VN")} <u>đ</u> */}
-                    </span>
-                  </td>
-                  <td className="text-right">
-                    <span className="text-sm lg:text-base font-medium">
-                      {/* {(item.quantity * item.price).toLocaleString("vi-VN")} <u>đ</u> */}
-                    </span>
-                  </td>
-                  <td className="text-center">
-                    {/* <Button type="danger" onClick={() => handleRemoveCart(item)}>
+                    </td>
+                    <td className="hidden text-right md:table-cell">
+                      <span className="text-sm text-center lg:text-base font-medium">
+                        {item.price.toLocaleString("vi-VN")} <u>đ</u>
+                      </span>
+                    </td>
+                    <td className="text-right">
+                      <span className="text-sm lg:text-base font-medium">
+                        {(item.quantity * item.price).toLocaleString("vi-VN")} <u>đ</u>
+                      </span>
+                    </td>
+                    <td className="text-center">
+                      <Button type="danger" onClick={() => handleRemoveCart(item)}>
                         {<DeleteFilled />}
-                      </Button> */}
-                  </td>
-                </tr>
-                {/* ))} */}
-                {/* <Button type="danger" onClick={() => hanleClearCart()}>
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+                <Button type="danger" onClick={() => hanleClearCart()}>
                   Xóa giỏ hàng
-                </Button> */}
+                </Button>
               </tbody>
             </table>
             <hr className="pb-6 mt-6" />
@@ -131,7 +189,7 @@ const ShopppingCart = () => {
                       Tổng phụ:
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      {/* {cart.cartTotalAmout.toLocaleString("vn-VN")} <u>đ</u> */}
+                      {cart.cartTotalAmout.toLocaleString("vn-VN")} <u>đ</u>
                     </div>
                   </div>
 
@@ -140,7 +198,10 @@ const ShopppingCart = () => {
                       Thuế (3%):
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      {/* {cart.cartThue.toLocaleString("vi", { style: "currency", currency: "VND" })} */}
+                      {cart.cartThue.toLocaleString("vi", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
                     </div>
                   </div>
                   <div className="flex justify-between pt-4 border-b">
@@ -148,7 +209,10 @@ const ShopppingCart = () => {
                       Phí vận chuyển:
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      {/* {cart.cartShip.toLocaleString("vi", { style: "currency", currency: "VND" })} */}
+                      {cart.cartShip.toLocaleString("vi", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
                     </div>
                   </div>
                   <div className="flex justify-between pt-4 border-b">
@@ -156,7 +220,10 @@ const ShopppingCart = () => {
                       Tổng:
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      {/* {cart.cartTotal.toLocaleString("vi", { style: "currency", currency: "VND" })} */}
+                      {cart.cartTotal.toLocaleString("vi", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
                     </div>
                   </div>
                   <NavLink to="/checkout">

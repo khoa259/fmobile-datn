@@ -5,9 +5,12 @@ const initialState = {
 };
 
 export const getProducts = createAsyncThunk("product/getProducts", async () => {
+  try {
     const { data } = await getAll();
-    console.log(data.slice(0,5));
     return data;
+  } catch (error) {
+    return error.message;
+  }
 });
 
 const productSlice = createSlice({

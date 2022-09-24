@@ -3,10 +3,12 @@ import { Route, Routes } from "react-router-dom";
 import WebsiteLayout from "./Layout/WebsiteLayout";
 import HomePage from "./pages/client/HomePage";
 import ShopppingCart from "./pages/client/shoppingCart";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<WebsiteLayout />}>
           <Route index element={<HomePage />} />
