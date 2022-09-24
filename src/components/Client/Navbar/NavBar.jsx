@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Search from "../Search/Search";
 import { MenuList } from "./data-menu";
 
@@ -17,9 +17,10 @@ const NavBar = () => {
           </a>
           <Search />
           <div className="flex items-center md:order-2 ">
-            <button
+          <NavLink to={'/cart'}><button
               type="button"
               className="relative flex mr-3 text-sm rounded-full ">
+              
               <svg
                 className="w-9 h-9 text-white bg-zinc-900 mr-8"
                 fill="none"
@@ -36,6 +37,7 @@ const NavBar = () => {
                 1
               </span>
             </button>
+            </NavLink>
             <button
               type="button"
               className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
