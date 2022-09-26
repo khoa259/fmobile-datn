@@ -34,13 +34,9 @@ const ListProduct = () => {
                   </h3>
                   <p className="mt-1 text-sm text-gray-500">{prd.color}</p>
                 </div>
-                <p className="text-sm font-medium text-gray-900">
-                  ${prd.price}
-                </p>
+                <p className="text-sm font-medium text-gray-900">${prd.price}</p>
               </div>
-              <button className="bg-red-500 px-2 py-1 text-white ">
-                Add to card
-              </button>
+              <button className="bg-red-500 px-2 py-1 text-white ">Add to card</button>
             </div>
           ))}
         </div>
