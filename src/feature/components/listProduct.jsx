@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../../slice/CartSlice";
 import { getProducts } from "../../slice/productSlice";
+
+
 
 const ListProduct = () => {
   const dispatch = useDispatch();
@@ -12,6 +15,7 @@ const ListProduct = () => {
   useEffect(() => {
     dispatch(getProducts())
       .unwrap()
+
       .then((value) => {
         setProducts(value);
       })
@@ -53,8 +57,10 @@ const ListProduct = () => {
                   <button className="bg-red-500 px-2 py-1 text-white " type="button" onClick={() => AddtoCart(prd)}>
                     Add to card
                   </button>
+
+  
                 </div>
-              ))}
+             
           </div>
         </div>
       )}
