@@ -3,10 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import WebsiteLayout from "./Layout/WebsiteLayout";
 import HomePage from "./pages/client/HomePage";
 import ShopppingCart from "./pages/client/shoppingCart";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<WebsiteLayout />}>
           <Route index element={<HomePage />} />
@@ -17,9 +20,9 @@ function App() {
           <Route path="/phu-kien" element={<h1>Phu kien page</h1>} />
           <Route path="/tin-tuc" element={<h1>Tin Tuc</h1>} />
           <Route path="/dich-vu" element={<h1>Dich vu</h1>} />
+          <Route path="/cart" element={<ShopppingCart />} />
         </Route>
         {/* Router cart */}
-        <Route path="/cart" element={<ShopppingCart />} />
       </Routes>
     </div>
   );
