@@ -4,8 +4,8 @@ import ListProduct from "../../feature/components/listProduct";
 const HomePage = () => {
   return (
     <div>
-      {/* <Banner /> */}
-      {/* <ListProduct /> */}
+      <Banner />
+      <ListProduct />
     </div>
   );
 };

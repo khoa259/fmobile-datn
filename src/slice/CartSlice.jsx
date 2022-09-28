@@ -6,7 +6,6 @@ const initialState = {
   cartTotalQuantity: 0,
   cartTotalAmout: 0,
   cartThue: 0,
-  cartShip: 0,
   cartTotal: 0,
 };
 
@@ -15,10 +14,10 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
-      const itemIndex = state.cartItems.findIndex((item) => item._id === action.payload._id);
+      const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
       if (itemIndex >= 0) {
         state.cartItems[itemIndex].quantity += 1;
-        toast.info(`Thêm số lượng ${state.cartItems[itemIndex].name} vào giỏ hàng`, {
+        toast.success(`Thêm số lượng ${state.cartItems[itemIndex].name} vào giỏ hàng`, {
           position: "top-right",
         });
       } else {
@@ -32,7 +31,7 @@ const cartSlice = createSlice({
       localStorage.setItem("cartProducts", JSON.stringify(state.cartItems));
     },
     removeCart(state, action) {
-      state.cartItems = state.cartItems.filter((item) => item._id !== action.payload._id);
+      state.cartItems = state.cartItems.filter((item) => item.id !== action.payload.id);
       localStorage.setItem("cartProducts", JSON.stringify(state.cartItems));
       toast.error(`Xóa ${action.payload.name} khỏi giỏ hàng`, {
         position: "top-right",
@@ -69,18 +68,16 @@ const cartSlice = createSlice({
       localStorage.removeItem("cartProducts", JSON.stringify(state.cartItems));
     },
     getTotal(state) {
-      let { total, quantity, thue, ship, totalOrder } = state.cartItems.reduce(
+      let { total, quantity, thue, totalOrder } = state.cartItems.reduce(
         (cartTotal, cartItem) => {
           const { price, quantity } = cartItem;
           const itemTotal = price * quantity;
           const itemThue = price * quantity * 0.03;
-          const itemShip = price * quantity * 0.005;
-          const itemCartTotal = price * quantity + itemShip + itemThue;
+          const itemCartTotal = price * quantity + itemThue;
 
           cartTotal.total += itemTotal;
           cartTotal.quantity += quantity;
           cartTotal.thue += itemThue;
-          cartTotal.ship += itemShip;
           cartTotal.totalOrder += itemCartTotal;
 
           return cartTotal;
@@ -89,14 +86,12 @@ const cartSlice = createSlice({
           total: 0,
           quantity: 0,
           thue: 0,
-          ship: 0,
           totalOrder: 0,
         }
       );
       state.cartTotalQuantity = quantity;
       state.cartTotalAmout = total;
       state.cartThue = thue;
-      state.cartShip = ship;
       state.cartTotal = totalOrder;
     },
   },

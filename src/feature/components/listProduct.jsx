@@ -1,28 +1,26 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addToCart } from "../../slice/CartSlice";
-import { getProducts } from "../productSlice";
+import { getProducts } from "../../slice/productSlice";
 
 const ListProduct = () => {
-  debugger;
-
   const dispatch = useDispatch();
-  // const products = useSelector((state) => state.product.items);
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  // useEffect(() => {
-  //   dispatch(getProducts())
-  //     .unwrap()
-  //     .then((value) => {
-  //       setProducts(value);
-  //     })
-  //     .catch((err) => {});
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getProducts())
+      .unwrap()
+      .then((value) => {
+        setProducts(value);
+      })
+      .catch((err) => {});
+  }, [dispatch]);
 
   const AddtoCart = async (product) => {
-    console.log("abc");
-    // dispatch(addToCart(product));
-    // navigate("/cart");
+    dispatch(addToCart(product));
+    navigate("/cart");
   };
 
   return (
@@ -43,18 +41,18 @@ const ListProduct = () => {
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-700">
-                        <a href="#">
-                          <span aria-hidden="true" className="absolute inset-0" />
-                          {prd?.name}
-                        </a>
+                        {/* <a href="#"> */}
+                        <span aria-hidden="true" className="absolute" />
+                        {prd?.name}
+                        {/* </a> */}
                       </h3>
                       <p className="mt-1 text-sm text-gray-500">{prd?.color}</p>
                     </div>
                     <p className="text-sm font-medium text-gray-900">${prd?.price}</p>
                   </div>
-                  {/* <button className="bg-red-500 px-2 py-1 text-white " type="button" onClick={() => AddtoCart}>
+                  <button className="bg-red-500 px-2 py-1 text-white " type="button" onClick={() => AddtoCart(prd)}>
                     Add to card
-                  </button> */}
+                  </button>
                 </div>
               ))}
           </div>
