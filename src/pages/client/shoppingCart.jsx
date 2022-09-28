@@ -10,8 +10,6 @@ const ShopppingCart = () => {
   console.log("cart", cart);
   const dispatch = useDispatch();
 
-  const noCart = localStorage.getItem("cartProducts");
-
   useEffect(() => {
     dispatch(getTotal());
   }, [cart]);
@@ -89,9 +87,7 @@ const ShopppingCart = () => {
                         </svg>
                       </Button>
                     </div>
-                    <span className="text-center w-1/5 font-semibold text-sm">
-                      {item.price.toLocaleString("vi-VN")}
-                    </span>
+                    <span className="text-center w-1/5 font-semibold text-sm">{item.price}</span>
                     <span className="text-center w-1/5 font-semibold text-sm">
                       {(item.quantity * item.price).toLocaleString("vi-VN")} <u>đ</u>
                     </span>
