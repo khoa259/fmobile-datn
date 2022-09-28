@@ -4,6 +4,7 @@ import WebsiteLayout from "./Layout/WebsiteLayout";
 import HomePage from "./pages/client/HomePage";
 import ShopppingCart from "./pages/client/shoppingCart";
 import "react-toastify/dist/ReactToastify.css";
+import ProductDetail from "./pages/client/productDetail";
 import { ToastContainer } from "react-toastify";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<WebsiteLayout />}>
           <Route index element={<HomePage />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/iphone" element={<h1>Iphone Page</h1>} />
           <Route path="/mac" element={<h1>MacBook page</h1>} />
           <Route path="/imac" element={<h1>Imac page</h1>} />

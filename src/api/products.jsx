@@ -5,6 +5,6 @@ export const getAll = () => {
   return instance.get(url);
 };
 export const getProduct = (id) => {
-  const url = `/product/${id}`;
+  const url = `/products/${id}`;
   return instance.get(url);
 };

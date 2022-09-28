@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { addToCart } from "../../slice/CartSlice";
 import { getProducts } from "../../slice/productSlice";
 
@@ -32,11 +32,13 @@ const ListProduct = () => {
             products?.map((prd, index) => (
               <div className="group relative bg-gray-100 p-5" key={index}>
                 <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-                  <img
-                    src={prd?.img}
-                    alt="Front of men's Basic Tee in black."
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                  />
+                  <NavLink to={`/products/${prd.id}`}>
+                    <img
+                      src={prd?.img}
+                      alt="Front of men's Basic Tee in black."
+                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                    />
+                  </NavLink>
                 </div>
                 <div className="mt-4 flex justify-between">
                   <div>
