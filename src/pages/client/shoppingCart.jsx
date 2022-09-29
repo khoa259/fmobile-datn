@@ -31,7 +31,12 @@ const ShopppingCart = () => {
   };
 
   if (cart.cartItems.length === 0) {
-    return <div>Giỏ hàng của bạn trống</div>;
+    return (
+      <div className="text-center py-5 text-xl font-semibold">
+        Giỏ hàng của bạn trống <br />
+        <button className="p-2 mt-2 bg-blue-500 text-gray-100 hover:bg-blue-600">Tiếp tục mua hàng</button>
+      </div>
+    );
   } else {
     return (
       <>
