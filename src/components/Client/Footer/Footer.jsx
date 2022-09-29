@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 
 const Footer = () => {
   return (
-    <div className="{styles.footer}">
+    <div className={styles.footer}>
       <hr className="py-2" />
       <footer className="p-4 ">
         <div className="md:flex md:justify-around">
@@ -28,7 +28,7 @@ const Footer = () => {
               <h2 className="mb-6 text-lg font-semibold text-gray-200 uppercase dark:text-white">Sản phẩm</h2>
               <ul className="text-white">
                 {MenuList.map((item, index) => (
-                  <li className="mb-4">
+                  <li className="mb-4" key={index}>
                     <Link href={item.path} className="hover:underline">
                       {item.label}
                     </Link>

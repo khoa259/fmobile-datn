@@ -1,11 +1,12 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import WebsiteLayout from "./Layout/WebsiteLayout";
-import HomePage from "./pages/client/HomePage";
+import HomePage from "./pages/client/homePage/HomePage";
 import ShopppingCart from "./pages/client/shoppingCart";
 import "react-toastify/dist/ReactToastify.css";
 import ProductDetail from "./pages/client/productDetail";
 import { ToastContainer } from "react-toastify";
+import AdminLayout from "./Layout/adminLayout";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
           <Route path="/cart" element={<ShopppingCart />} />
         </Route>
         {/* Router cart */}
+        <Route path="admin" element={<AdminLayout />}>
+          <Route index element={<Navigate to="dashboard" />} />
+          <Route path="dashboard" element={<h1>Dashboard</h1>} />
+        </Route>
       </Routes>
     </div>
   );
