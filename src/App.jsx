@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ProductDetail from "./pages/client/productDetail";
 import { ToastContainer } from "react-toastify";
 import AdminLayout from "./Layout/adminLayout";
+import CheckOut from "./pages/client/checkOut";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/tin-tuc" element={<h1>Tin Tuc</h1>} />
           <Route path="/dich-vu" element={<h1>Dich vu</h1>} />
           <Route path="/cart" element={<ShopppingCart />} />
+          <Route path="/checkout" element={<CheckOut />} />
         </Route>
         {/* Router cart */}
         <Route path="admin" element={<AdminLayout />}>
