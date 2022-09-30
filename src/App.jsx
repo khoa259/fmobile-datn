@@ -8,6 +8,7 @@ import ProductDetail from "./pages/client/productDetail";
 import { ToastContainer } from "react-toastify";
 import AdminLayout from "./Layout/adminLayout";
 import CheckOut from "./pages/client/checkOut";
+import ProductPage from "./pages/client/Products/productPage";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route path="/" element={<WebsiteLayout />}>
           <Route index element={<HomePage />} />
           <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/iphone" element={<h1>Iphone Page</h1>} />
+          <Route path="/iphone" element={<ProductPage />} />
           <Route path="/mac" element={<h1>MacBook page</h1>} />
           <Route path="/imac" element={<h1>Imac page</h1>} />
           <Route path="/apple-watch" element={<h1>Apple Watch</h1>} />

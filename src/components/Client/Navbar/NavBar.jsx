@@ -6,7 +6,6 @@ import { MenuList } from "./data-menu";
 
 const NavBar = () => {
   const cart = useSelector((state) => state.cart);
-  console.log("cart", cart.cartItems);
   const dispatch = useDispatch();
   return (
     <div>

@@ -14,7 +14,6 @@ const ProductDetail = () => {
   useEffect(() => {
     const getDetail = async () => {
       const { data } = await getProduct(id);
-      console.log("data", data);
       setProducts(data);
     };
     getDetail();

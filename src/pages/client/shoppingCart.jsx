@@ -7,7 +7,6 @@ import { clearCart, decreaseCart, getTotal, increaseCart, removeCart } from "../
 
 const ShopppingCart = () => {
   const cart = useSelector((state) => state.cart);
-  console.log("cart", cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
