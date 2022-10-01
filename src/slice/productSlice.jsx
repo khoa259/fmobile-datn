@@ -29,17 +29,10 @@ const productSlice = createSlice({
     builder.addCase(getProducts.fulfilled, (state, action) => {
       state.items = action.payload;
     });
-  },
-});
-
-const productDetail = createSlice({
-  name: "product",
-  initialState,
-  extraReducers: (builder) => {
     builder.addCase(getProduct.fulfilled, (state, action) => {
       state.items = action.payload;
     });
   },
 });
 
-export default { productSlice, productDetail }.reducer;
+export default { productSlice }.reducer;

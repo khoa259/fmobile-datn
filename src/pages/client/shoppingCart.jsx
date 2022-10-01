@@ -2,12 +2,11 @@ import { DeleteFilled } from "@ant-design/icons";
 import { Button } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { clearCart, decreaseCart, getTotal, increaseCart, removeCart } from "../../slice/cartSlice";
 
 const ShopppingCart = () => {
   const cart = useSelector((state) => state.cart);
-  console.log("cart", cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const ShopppingCart = () => {
   } else {
     return (
       <>
-        <div className="container w-full h-full">
+        <div className="container min-w-full h-full">
           <div className="flex shadow-md ">
             <div className="w-3/4 bg-white px-10 py-10">
               <div className="flex justify-between ">
@@ -143,9 +142,11 @@ const ShopppingCart = () => {
                     })}
                   </span>
                 </div>
-                <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
-                  Checkout
-                </button>
+                <Link to={"/checkout"}>
+                  <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
+                    Checkout
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
