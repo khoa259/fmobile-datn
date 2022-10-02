@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import AdminLayout from "./Layout/adminLayout";
 import CheckOut from "./pages/client/checkOut";
 import ProductPage from "./pages/client/Products/productPage";
+import Page404 from "./pages/404";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route index element={<Navigate to="dashboard" />} />
           <Route path="dashboard" element={<h1>Dashboard</h1>} />
         </Route>
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </div>
   );

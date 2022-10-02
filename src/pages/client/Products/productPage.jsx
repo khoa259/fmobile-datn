@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Select } from "antd";
 import { getProducts } from "../../../slice/productSlice";
 
@@ -36,19 +36,21 @@ const ProductPage = () => {
             {products &&
               products?.map((prd, index) => (
                 <div className="px-16 mt-4" key={index}>
-                  <div className=" mx-0 overflow-hidden hover:scale-105 duration-300">
-                    <img
-                      src={prd.img}
-                      alt="#"
-                      className="h-80 object-cover object-center group-hover:opacity-75 mx-auto"
-                    />
-                  </div>
-                  <div className="flex justify-center mt-4 ">
-                    <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none" />
-                    <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none" />
-                    <button className="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none" />
-                  </div>
-                  <h3 className="mt-3 text-center text-2xl font-bold text-gray-700">{prd.name}</h3>
+                  <NavLink to={`/products/${prd.id}`}>
+                    <div className=" mx-0 overflow-hidden hover:scale-105 duration-300">
+                      <img
+                        src={prd.img}
+                        alt="#"
+                        className="h-80 object-cover object-center group-hover:opacity-75 mx-auto"
+                      />
+                    </div>
+                    <div className="flex justify-center mt-4 ">
+                      <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none" />
+                      <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none" />
+                      <button className="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none" />
+                    </div>
+                    <h3 className="mt-3 text-center text-2xl font-bold text-gray-700">{prd.name}</h3>
+                  </NavLink>
                   <div className="mx-auto w-fit cursor-pointer mt-4">
                     <ul className="bg-gray-200 rounded-md">
                       <li className="px-5 py-2 inline-block hover:bg-gray-600 duration-300 rounded-md hover:text-white">
