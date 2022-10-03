@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const SideBar = () => {
   return (
     <div>
-      <aside className="w-64" aria-label="Sidebar">
+      <aside className="w-80" aria-label="Sidebar">
         <div className="fixed h-full w-72 overflow-y-auto py-4 px-4 bg-slate-800 rounded dark:bg-gray-800">
           <ul className="space-y-2">
             <li>
@@ -85,7 +85,7 @@ const SideBar = () => {
             </li>
             <li>
               <Link
-                to="/admin"
+                to="/admin/products"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-slate-700 dark:hover:bg-gray-700"
               >
                 <svg

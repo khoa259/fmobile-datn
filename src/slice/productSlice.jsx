@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAll, getProduct } from "../api/products";
+import { getAll, getProduct, addPrd } from "../api/products";
 const initialState = {
   items: [],
 };
@@ -22,6 +22,14 @@ export const detail = createAsyncThunk("product/detail", async () => {
   }
 });
 
+export const addProduct = createAsyncThunk("product/addProduct", async (dataForm) => {
+  try {
+    const { data } = await addPrd(dataForm);
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+});
 const productSlice = createSlice({
   name: "product",
   initialState,
@@ -31,6 +39,9 @@ const productSlice = createSlice({
     });
     builder.addCase(getProduct.fulfilled, (state, action) => {
       state.items = action.payload;
+    });
+    builder.addCase(addProduct.fulfilled, (state, action) => {
+      state.items.unshift(action.payload);
     });
   },
 });
