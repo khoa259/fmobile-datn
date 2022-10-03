@@ -10,6 +10,7 @@ import AdminLayout from "./Layout/adminLayout";
 import CheckOut from "./pages/client/checkOut";
 import ProductPage from "./pages/client/Products/productPage";
 import Page404 from "./pages/404";
+import AddProducts from "./pages/admin/products/addProducts";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         <Route path="admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="dashboard" />} />
           <Route path="dashboard" element={<h1>Dashboard</h1>} />
+          <Route path="products">
+            <Route path="add" element={<AddProducts />} />
+          </Route>
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>
