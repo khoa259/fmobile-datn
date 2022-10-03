@@ -21,7 +21,6 @@ const ProductDetail = () => {
 
   const AddtoCart = async (product) => {
     dispatch(addToCart(product));
-    navigate("/cart");
   };
 
   return (
