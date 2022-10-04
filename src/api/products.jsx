@@ -12,3 +12,7 @@ export const addPrd = (data) => {
   const url = "/products";
   return instance.post(url, data);
 };
+export const removePrd = (id) => {
+  const url = `/products/${id}`;
+  return instance.delete(url);
+};

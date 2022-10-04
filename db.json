@@ -32,21 +32,13 @@
     },
     {
       "createdAt": "2022-09-18T17:14:02.020Z",
-      "name": "Licensed Concrete Shirt",
+      "name": "Licensed ",
       "price": "534.00",
       "description": "It is a long established fact that a reader will be distracted by thereadable content of a page when looking at its layout. The point of usingLorem Ipsum is that it has a more-or-less normal distribution of letters.",
       "category": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
       "color": "#6d3234",
       "img": "http://loremflickr.com/640/480/business",
       "id": "4"
-    },
-    {
-      "img": "https://scontent.fhan14-2.fna.fbcdn.net/v/t31.18172-8/23674736_552775461738409_3026243183211073246_o.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=KV0b_3LKDpMAX-UH67m&_nc_ht=scontent.fhan14-2.fna&oh=00_AT9ibiIRZMeFyTXsGn1oxlZresqqWTskIkDiyl6LLRkN_A&oe=63219D59",
-      "name": "asdasd",
-      "category": "Danh Mục",
-      "price": "1967",
-      "description": "qweqwe",
-      "id": "alx_aPv"
     }
   ],
   "orders": [

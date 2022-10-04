@@ -11,6 +11,7 @@ import CheckOut from "./pages/client/checkOut";
 import ProductPage from "./pages/client/Products/productPage";
 import Page404 from "./pages/404";
 import AddProducts from "./pages/admin/products/addProducts";
+import ListProducts from "./pages/admin/products/listProduct";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route index element={<Navigate to="dashboard" />} />
           <Route path="dashboard" element={<h1>Dashboard</h1>} />
           <Route path="products">
+            <Route index element={<ListProducts />} />
             <Route path="add" element={<AddProducts />} />
           </Route>
         </Route>

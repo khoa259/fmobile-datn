@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAll, getProduct, addPrd } from "../api/products";
+import { getAll, getProduct, addPrd, removePrd } from "../api/products";
 const initialState = {
   items: [],
 };
@@ -30,6 +30,18 @@ export const addProduct = createAsyncThunk("product/addProduct", async (dataForm
     return error.message;
   }
 });
+
+export const deleteProduct = createAsyncThunk("product/deleteProduct", async (id) => {
+  const alert = window.confirm("Bạn có muốn xóa sản phẩm");
+  try {
+    if (alert) {
+      const { data } = await removePrd(id);
+      return data;
+    }
+  } catch (error) {
+    return error.message;
+  }
+});
 const productSlice = createSlice({
   name: "product",
   initialState,
@@ -42,6 +54,9 @@ const productSlice = createSlice({
     });
     builder.addCase(addProduct.fulfilled, (state, action) => {
       state.items.unshift(action.payload);
+    });
+    builder.addCase(deleteProduct.fulfilled, (state, action) => {
+      state.value = state.value.filter((item) => item.id !== action.payload.id);
     });
   },
 });
