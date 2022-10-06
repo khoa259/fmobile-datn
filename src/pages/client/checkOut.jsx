@@ -39,7 +39,8 @@ const CheckOut = () => {
     const orderItems = cart.cartItems;
     const order = { infoOrder, orderItems, totalPrice };
     localStorage.getItem("order", JSON.stringify(order));
-    dispatch(addToOrder(order));
+    const random = Math.floor(Math.random() * 1000);
+    dispatch(addToOrder({ ...order, id: random }));
     console.log("1234", order);
   };
   return (
