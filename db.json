@@ -39,9 +39,43 @@
       "color": "#6d3234",
       "img": "http://loremflickr.com/640/480/business",
       "id": "4"
+    },
+    {
+      "img": "https://bizweb.dktcdn.net/100/431/381/products/iphone-13-pro-green-select.png?v=1647659119563",
+      "name": "Cunthoi",
+      "category": "Danh Mục",
+      "price": "1233",
+      "description": "sdfnsdklf",
+      "id": "GYQo8m3"
     }
   ],
   "orders": [
-    {}
+    {
+      "infoOrder": {
+        "fullName": "Toai Bui",
+        "email": "buitoai2031@gmail.com",
+        "phoneNumber": "0985738577",
+        "city": "Hà Nội",
+        "district": "Đống Đa",
+        "street": "Số 5 Trúc Khê, Đống Đa, Hà Nội",
+        "address": "Số 5 Trúc Khê, Đống Đa, Hà Nội",
+        "notes": ""
+      },
+      "orderItems": [
+        {
+          "createdAt": "2022-09-19T14:27:31.637Z",
+          "name": "Gorgeous Metal Pants",
+          "price": "675.00",
+          "description": "It is a long established fact that a reader will be distracted by thereadable content of a page when looking at its layout. The point of usingLorem Ipsum is that it has a more-or-less normal distribution of letters.",
+          "category": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+          "color": "#367b05",
+          "img": "http://loremflickr.com/640/480/business",
+          "id": "1",
+          "quantity": 3
+        }
+      ],
+      "totalPrice": 2085.75,
+      "id": 88
+    }
   ]
 }
