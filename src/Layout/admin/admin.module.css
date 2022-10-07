@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+};
+.sideBar{
+    flex: none
+}
+.mainAdmin{
+    background:rgb(253, 252, 252);
+    flex-grow: 1;
+    min-height: 100vh;
+}
