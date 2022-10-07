@@ -1,26 +1,39 @@
-import React from "react";
 import { PlusOutlined } from "@ant-design/icons";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { addProduct } from "../../../slice/productSlice";
-const AddProducts = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+import { useNavigate, useParams } from "react-router-dom";
+import { getProduct } from "../../../api/products";
+import { updateProduct } from "../../../slice/productSlice";
+
+const UpdateProduct = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const getOneProducts = async () => {
+      const { data } = await getProduct(id);
+      console.log("get Data", data);
+      reset(data);
+    };
+    getOneProducts();
+  }, []);
   const onSubmit = async (dataForm) => {
-    await dispatch(addProduct(dataForm));
+    await dispatch(updateProduct(dataForm));
+    console.log("data Form", dataForm);
     navigate("/admin/products");
   };
 
   return (
     <div className="w-4/5 mx-auto">
       <div className="title text-center mt-4">
-        <h1 className=" font-bold text-blue-600 text-md lg:text-3xl">Thêm sản phẩm</h1>
+        <h1 className=" font-bold text-blue-600 text-md lg:text-3xl">Cập nhật sản phẩm</h1>
       </div>
       <div className="form-input mt-10">
         <form action="" onSubmit={handleSubmit(onSubmit)}>
@@ -111,7 +124,7 @@ const AddProducts = () => {
             ></textarea>
           </div>
           <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            Thêm sản phẩm
+            Cập nhật sản phẩm
           </button>
         </form>
       </div>
@@ -119,4 +132,4 @@ const AddProducts = () => {
   );
 };
 
-export default AddProducts;
+export default UpdateProduct;
